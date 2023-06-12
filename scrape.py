@@ -1,7 +1,8 @@
 import time
 import re
 import selenium.common.exceptions
-from model import db, FruitsDb
+from db.client import db_client
+from db.models.devil_fruits import DevilFruits
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
@@ -132,19 +133,19 @@ class DevilFruits:
 
             if len(types) > 1:
                 devil_fruit_type = ", ".join(types)
-                new_devil_fruit = FruitsDb(devil_fruit_name=devil_fruit_name.title(),
-                                           devil_fruit_type=devil_fruit_type,
-                                           current_user=current_user,
-                                           devil_fruit_img=devil_fruit_img)
-                db.session.add(new_devil_fruit)
-                db.session.commit()
+                new_devil_fruit = DevilFruits(devil_fruit_name=devil_fruit_name.title(),
+                                              devil_fruit_type=devil_fruit_type,
+                                              current_user=current_user,
+                                              devil_fruit_img=devil_fruit_img)
+                data = new_devil_fruit.dict()
+                db_client.devil_fruits.insert_one(data)
             else:
-                new_devil_fruit = FruitsDb(devil_fruit_name=devil_fruit_name.title(),
-                                           devil_fruit_type=types[0],
-                                           current_user=current_user,
-                                           devil_fruit_img=devil_fruit_img)
-                db.session.add(new_devil_fruit)
-                db.session.commit()
+                new_devil_fruit = DevilFruits(devil_fruit_name=devil_fruit_name.title(),
+                                              devil_fruit_type=types[0],
+                                              current_user=current_user,
+                                              devil_fruit_img=devil_fruit_img)
+                data = new_devil_fruit.dict()
+                db_client.devil_fruits.insert_one(data)
         self.driver.quit()
 
     def scrape_devil_fruits(self):
