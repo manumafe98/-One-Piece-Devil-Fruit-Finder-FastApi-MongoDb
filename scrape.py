@@ -2,7 +2,7 @@ import time
 import re
 import selenium.common.exceptions
 from db.client import db_client
-from db.models.devil_fruits import DevilFruits
+from db.models.devil_fruits import DevilFruitsModel
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
@@ -133,14 +133,14 @@ class DevilFruits:
 
             if len(types) > 1:
                 devil_fruit_type = ", ".join(types)
-                new_devil_fruit = DevilFruits(devil_fruit_name=devil_fruit_name.title(),
+                new_devil_fruit = DevilFruitsModel(devil_fruit_name=devil_fruit_name.title(),
                                               devil_fruit_type=devil_fruit_type,
                                               current_user=current_user,
                                               devil_fruit_img=devil_fruit_img)
                 data = new_devil_fruit.dict()
                 db_client.devil_fruits.insert_one(data)
             else:
-                new_devil_fruit = DevilFruits(devil_fruit_name=devil_fruit_name.title(),
+                new_devil_fruit = DevilFruitsModel(devil_fruit_name=devil_fruit_name.title(),
                                               devil_fruit_type=types[0],
                                               current_user=current_user,
                                               devil_fruit_img=devil_fruit_img)

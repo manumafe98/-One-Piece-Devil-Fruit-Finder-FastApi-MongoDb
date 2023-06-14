@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class DevilFruits(BaseModel):
+class DevilFruitsModel(BaseModel):
     devil_fruit_name: str
     devil_fruit_type: str
     current_user: str
