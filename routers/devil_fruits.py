@@ -7,6 +7,7 @@ router = APIRouter(prefix="/devil_fruits",
                    tags=["devil_fruits"], 
                    responses={status.HTTP_404_NOT_FOUND: {"error": "Something went wrong"}})
 
+
 @router.get("/", response_model=list[DevilFruitsModel], status_code=status.HTTP_200_OK)
 async def get_all_devil_fruits():
     return devil_fruits_schema(db_client.devil_fruits.find())
@@ -44,10 +45,12 @@ async def update_a_devil_fruit(devil_fruit: str, devil_fruit_model: DevilFruitsM
 
     try:
         db_client.devil_fruits.find_one_and_replace({"devil_fruit_name": devil_fruit}, devil_fruit_dict)
+        return search_devil_fruit_by_name(devil_fruit)
     except:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Devil fruit was not found so cannot be updated")
 
-@router.patch("/{devil_fruit}", status_code=status.HTTP_200_OK)
+
+@router.patch("/{devil_fruit}", response_model=DevilFruitsModel, status_code=status.HTTP_200_OK)
 async def patch_a_devil_fruit(devil_fruit: str, devil_fruit_data: dict):
     try:
         attribute_to_update = next(iter(devil_fruit_data))
@@ -68,5 +71,7 @@ def search_devil_fruit_by_name(devil_fruit: str):
     except:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Devil fruit not found")
 
+
 # TODO add docstrings to the functions
 # TODO dockerize the api and the mongodb
+# TODO add information to the readme
