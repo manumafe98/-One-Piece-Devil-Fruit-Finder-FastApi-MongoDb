@@ -4,5 +4,5 @@ def devil_fruit_schema(devil_fruit) -> dict:
             "current_user": devil_fruit["current_user"],
             "devil_fruit_img": devil_fruit["devil_fruit_img"]}
 
-def devil_fruits_schema():
-    pass
+def devil_fruits_schema(devil_fruits) -> list:
+    return [devil_fruit_schema(devil_fruit) for devil_fruit in devil_fruits]
