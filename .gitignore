@@ -1,5 +1,8 @@
-__pycache__/
-router/__pycache__/
-db/__pycache__/
-db/models/__pycache__
-db/schemas/__pycache__/
+api/__pycache__/
+api/router/__pycache__/
+api/db/__pycache__/
+api/db/models/__pycache__
+api/db/schemas/__pycache__/
+flask_mainapp/
+main_app/__pycache__
+main_app/routers/__pycache__
