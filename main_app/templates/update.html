@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+{% include "head.html" %}
+<body>
+    {% include "navbar.html" %}
+    <!-- Content -->
+      <div class="container">
+        <form method="POST">
+          <div class="form-group">
+            <label class="form-label" for="devil_fruit_to_update">Devil Fruit To Update</label>
+            <input class="form-control form-control-sm" id="devil_fruit_to_update" name="devil_fruit_to_update" type="text">
+          </div>
+        
+          <div class="form-group">
+            <label class="form-label" for="field_to_update">Field To Update</label>
+            <select class="form-control form-control-sm" id="field_to_update" name="field_to_update">
+              <option value="devil_fruit_name">Devil Fruit Name</option>
+              <option value="devil_fruit_type">Devil Fruit Type</option>
+              <option value="current_user">Current User</option>
+              <option value="devil_fruit_img">Devil Fruit Image</option>
+            </select>
+          </div>
+        
+          <div class="form-group">
+            <label class="form-label" for="updated_value">Updated Value</label>
+            <input class="form-control form-control-sm" id="updated_value" name="updated_value" type="text">
+          </div>
+        
+          <input class="btn btn-primary" type="submit" value="Submit">
+        </form>
+      </div>
+    {% include "footer.html" %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
