@@ -135,6 +135,3 @@ async def update_form(request: Request, devil_fruit_to_update: str = Form(...),
     response = requests.patch(f"http://localhost:8000/devil_fruits/{devil_fruit_name}", json=devil_fruit_params)
     redirect_url = router.url_path_for("home")
     return RedirectResponse(redirect_url, status_code=status.HTTP_303_SEE_OTHER)
-
-
-# TODO dockerize application

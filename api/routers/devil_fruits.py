@@ -147,7 +147,3 @@ def search_devil_fruit_by_name(devil_fruit: str):
         return DevilFruitsModel(**devil_fruit_schema(devil_fruit))
     except:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Devil fruit not found")
-
-
-# TODO dockerize the api and the mongodb
-# TODO add information to the readme
