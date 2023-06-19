@@ -38,7 +38,7 @@ async def home_form(request: Request, search_element: str = Form(...)):
     - N/A
     """
     devil_fruit_searched = search_element.title()
-    response = requests.get(f"http://fastapi-api-container:8000/devil_fruits/{devil_fruit_searched}")
+    response = requests.get(f"http://api:8000/devil_fruits/{devil_fruit_searched}")
     if response.status_code == 200:
         devil_fruit = response.json()
         image_url = devil_fruit["devil_fruit_img"]
@@ -90,7 +90,7 @@ async def add_form(request: Request, devil_fruit_name: str = Form(...), devil_fr
         "current_user": current_user.title(),
         "devil_fruit_img": devil_fruit_image
     }
-    response = requests.post("http://fastapi-api-container:8000/devil_fruits", json=devil_fruit_params)
+    response = requests.post("http://api:8000/devil_fruits", json=devil_fruit_params)
     redirect_url = router.url_path_for("home")
     return RedirectResponse(redirect_url, status_code=status.HTTP_303_SEE_OTHER)
 
@@ -132,7 +132,7 @@ async def update_form(request: Request, devil_fruit_to_update: str = Form(...),
         updated_value.title()
     devil_fruit_params = {f"{field_to_update}": updated_value}
     print(devil_fruit_params)
-    response = requests.patch(f"http://fastapi-api-container:8000/devil_fruits/{devil_fruit_name}"
+    response = requests.patch(f"http://api:8000/devil_fruits/{devil_fruit_name}"
                               , json=devil_fruit_params)
     redirect_url = router.url_path_for("home")
     return RedirectResponse(redirect_url, status_code=status.HTTP_303_SEE_OTHER)
