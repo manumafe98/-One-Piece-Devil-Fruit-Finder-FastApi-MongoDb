@@ -26,4 +26,4 @@ RUN pip install -r requirements.txt
 EXPOSE 8000
 
 # Run the setup script and start the Flask app with a sleep command
-CMD sleep 20 && uvicorn main:app --host=0.0.0.0 --port=8000 && python scrape.py
+CMD sleep 20 && python scrape.py && uvicorn main:app --host=0.0.0.0 --port=8000
