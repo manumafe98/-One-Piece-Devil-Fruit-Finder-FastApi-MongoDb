@@ -159,3 +159,6 @@ class DevilFruits:
         final_list = list(dict.fromkeys(final_list))
 
         self.get_fruit_info(final_list)
+
+devil_fruits = DevilFruits()
+devil_fruits.scrape_devil_fruits()
