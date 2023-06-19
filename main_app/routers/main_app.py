@@ -33,9 +33,6 @@ async def home_form(request: Request, search_element: str = Form(...)):
 
     Returns:
     - TemplateResponse: The response containing the rendered "devil_fruit.html" template with the devil fruit data.
-
-    Raises:
-    - N/A
     """
     devil_fruit_searched = search_element.title()
     response = requests.get(f"http://api:8000/devil_fruits/{devil_fruit_searched}")
@@ -46,9 +43,12 @@ async def home_form(request: Request, search_element: str = Form(...)):
         if image_response.status_code == 200:
             image_content = image_response.content
             base64_image = base64.b64encode(image_content).decode("utf-8")
-    return templates.TemplateResponse("devil_fruit.html", {"request": request, 
-                                                           "devil_fruit": devil_fruit, 
-                                                           "devil_fruit_img": base64_image})
+            return templates.TemplateResponse("devil_fruit.html", {"request": request, 
+                                                                   "devil_fruit": devil_fruit, 
+                                                                   "devil_fruit_img": base64_image})
+    return templates.TemplateResponse("index.html", {"request": request, 
+                                                     "error_message": "That fruit doesn't exist. Try again!", 
+                                                     "search_failed": True})
 
 
 @router.get("/add", response_class=HTMLResponse)
@@ -80,9 +80,6 @@ async def add_form(request: Request, devil_fruit_name: str = Form(...), devil_fr
 
     Returns:
     - RedirectResponse: A redirect response to the home page.
-
-    Raises:
-    - N/A
     """
     devil_fruit_params = {
         "devil_fruit_name": devil_fruit_name.title(),
@@ -123,9 +120,6 @@ async def update_form(request: Request, devil_fruit_to_update: str = Form(...),
 
     Returns:
     - RedirectResponse: A redirect response to the home page.
-
-    Raises:
-    - N/A
     """
     devil_fruit_name = devil_fruit_to_update.title()
     if field_to_update != "devil_fruit_img":

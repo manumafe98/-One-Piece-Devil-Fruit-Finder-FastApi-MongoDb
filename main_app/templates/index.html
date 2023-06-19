@@ -14,6 +14,9 @@
                               <input class="btn btn-primary" type="submit" value="Submit">
                             </div>
                           </form>
+                          {% if search_failed %}
+                            <p style="color: red;">{{ error_message }}</p>
+                          {% endif %}
                     </div>
                     <div class="col-lg-6">
                         <div class="image-container d-flex justify-content-center">
