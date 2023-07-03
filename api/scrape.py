@@ -134,16 +134,16 @@ class DevilFruits:
             if len(types) > 1:
                 devil_fruit_type = ", ".join(types)
                 new_devil_fruit = DevilFruitsModel(devil_fruit_name=devil_fruit_name.title(),
-                                              devil_fruit_type=devil_fruit_type,
-                                              current_user=current_user,
-                                              devil_fruit_img=devil_fruit_img)
+                                                   devil_fruit_type=devil_fruit_type,
+                                                   current_user=current_user,
+                                                   devil_fruit_img=devil_fruit_img)
                 data = new_devil_fruit.dict()
                 db_client.devil_fruits.insert_one(data)
             else:
                 new_devil_fruit = DevilFruitsModel(devil_fruit_name=devil_fruit_name.title(),
-                                              devil_fruit_type=types[0],
-                                              current_user=current_user,
-                                              devil_fruit_img=devil_fruit_img)
+                                                   devil_fruit_type=types[0],
+                                                   current_user=current_user,
+                                                   devil_fruit_img=devil_fruit_img)
                 data = new_devil_fruit.dict()
                 db_client.devil_fruits.insert_one(data)
         self.driver.quit()
