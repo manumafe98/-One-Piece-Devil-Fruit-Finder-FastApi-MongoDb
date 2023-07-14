@@ -2,6 +2,9 @@
 
 This project consists of an API and a frontend application that provide information about the Devil Fruits from the One Piece anime series. The API scrapes data from the One Piece wiki to gather details about the different devil fruits and exposes two endpoints to access this information.
 
+## App diagram
+![devil_fruit_diagram](https://github.com/manumafe98/One-Piece-Devil-Fruit-Finder-FastApi-MongoDb/assets/95315128/490450d2-3aae-465e-91a6-4d0ee4f50892)
+
 ## API
 
 The API, built using FastApi and Docker, offers the following endpoints:
