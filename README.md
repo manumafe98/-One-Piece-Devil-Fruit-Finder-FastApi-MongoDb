@@ -31,10 +31,10 @@ And with the `Update` button it consumes the `PATCH /devil_fruits/<devil_fruit>`
 
 First clone the repository, then if you don't have docker install it for your proper os.
 
-Then execute the following command on the path of your cloned repository
+Then execute the following command on the path of the cloned repository
 
 ```commandline
 docker compose up -d
 ```
 
-After that you can check your `localhost:8888` and `localhost:8000/devil_fruits` on your browser.
+After that you can check `localhost:8888` and `localhost:8000/devil_fruits` on the browser.
