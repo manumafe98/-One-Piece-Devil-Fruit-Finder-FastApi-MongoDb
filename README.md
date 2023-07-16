@@ -7,7 +7,7 @@ This project consists of an API and a frontend application that provide informat
 
 ## API
 
-The API, built using FastApi and Docker, offers the following endpoints:
+The API is built using FastApi and Docker, offers the following endpoints:
 
 - `GET /devil_fruits`: Retrieves a list of all devil fruits available.
 - `POST /devil_fruits`: Creates a new devil fruit and add it to the database.
@@ -16,8 +16,7 @@ The API, built using FastApi and Docker, offers the following endpoints:
 - `PUT /devil_fruits/<devil_fruit>`: Updates all the information of a devil fruit.
 - `PATCH /devil_fruits/<devil_fruit>`: Updates one attribute of the specified devil fruit.
 
-The API utilizes a Mongodb database to store the scraped data, enabling efficient retrieval of information. It also leverages the jsonify module to format the data and present it in a browser-friendly manner.
-
+The API utilizes a Mongodb database to store the scraped data, enabling efficient retrieval of information
 ## Frontend Application
 
 The frontend application is designed to consume the APIs `GET /devil_fruits/<devil_fruit>` endpoint. It features a user-friendly browser that allows users to search for devil fruits. When a fruit is searched, the application displays a card containing the fruit's image and its characteristics.
